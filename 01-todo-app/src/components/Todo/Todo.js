@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import { TodoList } from "./TodoList";
 import { TodoAdd } from "./TodoAdd";
 import { TodoSearch } from "./TodoSearch";
+import { TodoContext } from "../context/todo-context";
 
 import classes from "./Todo.module.css";
 
@@ -14,26 +15,13 @@ const TODO_DUMMY = [
 ];
 
 export const Todo = (props) => {
-  const [items, setItems] = useState([]);
-
-  const addTodoHandler = (item) => {
-    setItems((currentItems) => {
-      const newId = currentItems ? currentItems.length + 1 : 1;
-      return [{ id: newId, ...item }, ...currentItems];
-    });
-  };
-
-  const removeTodoHandler = (id) => {
-    setItems((currentItems) => {
-      return currentItems.filter((x) => x.id !== id);
-    });
-  };
+  const { items } = useContext(TodoContext);
 
   return (
     <div className={classes.todo}>
       <h1>Things To Do</h1>
-      <TodoAdd onAddTodo={addTodoHandler} />
-      <TodoList items={items} onRemoveTodo={removeTodoHandler} />
+      <TodoAdd />
+      <TodoList items={items} />
       <TodoSearch />
     </div>
   );

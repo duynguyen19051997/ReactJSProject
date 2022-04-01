@@ -6,7 +6,7 @@ export const TodoList = (props) => {
   return (
     <ul className={classes["todo__list"]}>
       {props.items.map((x) => (
-        <TodoItem item={x} key={x.id} onRemoveTodo={props.onRemoveTodo} />
+        <TodoItem item={x} key={x.id} />
       ))}
     </ul>
   );
