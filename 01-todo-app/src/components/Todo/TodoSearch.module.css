@@ -1,0 +1,13 @@
+.todo__search {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.todo__search input {
+  width: 70%;
+  height: 30px;
+}

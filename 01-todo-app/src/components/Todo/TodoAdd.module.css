@@ -1,0 +1,17 @@
+.todo__add {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.todo__add input {
+  width: 80%;
+  height: 30px;
+}
+
+.todo__add button {
+  width: 20%;
+}

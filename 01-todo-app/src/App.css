@@ -1,0 +1,12 @@
+.App {
+  width: 40%;
+  height: auto;
+  margin: 0 auto;
+  background-color: rgb(188, 197, 197);
+}
+
+.App h1 {
+  text-transform: uppercase;
+  text-align: center;
+  padding-top: 10px;
+}
