@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import { TodoList } from "./TodoList";
 import { TodoAdd } from "./TodoAdd";
@@ -15,13 +15,22 @@ const TODO_DUMMY = [
 ];
 
 export const Todo = (props) => {
-  const { items } = useContext(TodoContext);
+  const { items, searchItems, search } = useContext(TodoContext);
+  const [data, setData] = useState(items);
+
+  useEffect(() => {
+    if (search) {
+      setData(searchItems);
+    } else {
+      setData(items);
+    }
+  }, [search, items, searchItems]);
 
   return (
     <div className={classes.todo}>
       <h1>Things To Do</h1>
       <TodoAdd />
-      <TodoList items={items} />
+      <TodoList items={data} />
       <TodoSearch />
     </div>
   );
