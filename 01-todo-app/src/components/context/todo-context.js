@@ -2,8 +2,6 @@ import React, { useState } from "react";
 
 export const TodoContext = React.createContext({
   items: [],
-  searchItems: [],
-  search: null,
   addTodo: (todo) => {},
   removeTodo: (id) => {},
   inactiveTodo: (id) => {},
@@ -13,19 +11,22 @@ export const TodoContext = React.createContext({
 
 export const TodoContextProvider = (props) => {
   const [items, setItems] = useState([]);
-  const [searchItems, setSearchItems] = useState([]);
-  const [search, setSearch] = useState(null);
+  const [tempItems, setTempItems] = useState(items);
 
   const addTodoHandler = (todo) => {
     setItems((currentItems) => {
       const newId = currentItems ? currentItems.length + 1 : 1;
-      return [{ id: newId, ...todo }, ...currentItems];
+      const updateItems = [{ id: newId, ...todo }, ...currentItems];
+      setTempItems(updateItems);
+      return updateItems;
     });
   };
 
   const removeTodoHandler = (id) => {
     setItems((currentItems) => {
-      return currentItems.filter((x) => x.id !== id);
+      const updateItems = currentItems.findIndex((x) => x.id === id);
+      setTempItems(updateItems);
+      return updateItems;
     });
   };
 
@@ -38,6 +39,7 @@ export const TodoContextProvider = (props) => {
         ...activeTodo,
         isActive: !activeTodo.isActive,
       };
+      setTempItems(updateItems);
       return updateItems;
     });
   };
@@ -51,43 +53,36 @@ export const TodoContextProvider = (props) => {
         ...completedTodo,
         isCompleted: !completedTodo.isCompleted,
       };
+      setTempItems(updateItems);
       return updateItems;
     });
   };
 
   const searchTodoHandler = (search) => {
-    setSearch({
-      title: search.title,
-      isCompleted: search.isCompleted,
-      isActive: search.isActive,
-      isAll: search.isAll,
-    });
-    let result = items;
+    let filteredData = tempItems;
     if (!search.isAll) {
-      if (search.title.length > 0) {
-        result = items.filter(
+      if (search.title !== "") {
+        filteredData = tempItems.filter(
           (x) =>
-            x.title.includes(search.title) &&
+            x.title.toLowerCase().includes(search.title.toLowerCase()) &&
             x.isActive === search.isActive &&
             x.isCompleted === search.isCompleted
         );
       } else {
-        result = items.filter(
+        filteredData = tempItems.filter(
           (x) =>
             x.isActive === search.isActive &&
             x.isCompleted === search.isCompleted
         );
       }
     }
-    setSearchItems(result);
+    setItems(filteredData);
   };
 
   return (
     <TodoContext.Provider
       value={{
         items: items,
-        searchItems: searchItems,
-        search: search,
         addTodo: addTodoHandler,
         removeTodo: removeTodoHandler,
         inactiveTodo: inactiveTodoHandler,

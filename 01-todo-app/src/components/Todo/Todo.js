@@ -15,22 +15,13 @@ const TODO_DUMMY = [
 ];
 
 export const Todo = (props) => {
-  const { items, searchItems, search } = useContext(TodoContext);
-  const [data, setData] = useState(items);
-
-  useEffect(() => {
-    if (search) {
-      setData(searchItems);
-    } else {
-      setData(items);
-    }
-  }, [search, items, searchItems]);
+  const { items } = useContext(TodoContext);
 
   return (
     <div className={classes.todo}>
       <h1>Things To Do</h1>
       <TodoAdd />
-      <TodoList items={data} />
+      <TodoList items={items} />
       <TodoSearch />
     </div>
   );
