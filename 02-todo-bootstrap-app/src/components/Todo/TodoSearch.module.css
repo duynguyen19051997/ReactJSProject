@@ -1,0 +1,19 @@
+.todo__search {
+  width: 90%;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.todo__search input {
+  width: 70%;
+  height: 30px;
+}
+
+.active {
+  background-color: rgb(228, 220, 176) !important;
+  color: black !important;
+}
