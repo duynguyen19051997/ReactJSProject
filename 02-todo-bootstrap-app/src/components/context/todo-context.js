@@ -15,7 +15,8 @@ export const TodoContextProvider = (props) => {
 
   const addTodoHandler = (todo) => {
     setItems((currentItems) => {
-      const newId = Math.random().toString();
+      const newId =
+        currentItems && currentItems.length > 0 ? currentItems.length + 1 : 1;
       let updateItems = [];
       if (currentItems) {
         updateItems = [{ id: newId, ...todo }, ...currentItems];
@@ -29,7 +30,7 @@ export const TodoContextProvider = (props) => {
 
   const removeTodoHandler = (id) => {
     setItems((currentItems) => {
-      const updateItems = currentItems.find((x) => x.id !== id);
+      const updateItems = currentItems.filter((x) => x.id !== id);
       setTempItems(updateItems);
       return updateItems;
     });
