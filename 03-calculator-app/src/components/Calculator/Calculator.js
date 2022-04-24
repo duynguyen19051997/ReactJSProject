@@ -1,26 +1,39 @@
 import { useState, useEffect } from "react";
 import { evaluate } from "mathjs";
 
-import { NumberButton, CalculationButton, Card, H3 } from "../UI/UI";
+import { NumberButton, Card } from "../UI/UI";
 
 import classes from "./Calculator.module.css";
 
+const arrCalculator = ["+", "-", "*", "/"];
+
 export const Calculator = (props) => {
   const [enteredNumber, setEnteredNumber] = useState([]);
+  const [isClearLast, setIsClearLast] = useState(false);
   const [result, setResult] = useState([]);
 
-  // useEffect(() => {
-  //   if (enteredNumber.length > 0) {
-  //     setResult(() => {
-  //       return ["=", evaluate(enteredNumber.join(""))];
-  //     });
-  //   }
-  // }, [enteredNumber]);
-
-  const calculateHandler = (x) => {
-    if (enteredNumber.length > 0) {
+  useEffect(() => {
+    if (
+      enteredNumber.length > 0 &&
+      !arrCalculator.includes(enteredNumber[enteredNumber.length - 1])
+    ) {
       setResult(() => {
         return ["=", evaluate(enteredNumber.join(""))];
+      });
+    }
+  }, [enteredNumber]);
+
+  const calculateHandler = (x) => {
+    if (
+      enteredNumber.length > 0 &&
+      !arrCalculator.includes(enteredNumber[enteredNumber.length - 1])
+    ) {
+      setResult(() => {
+        return ["=", evaluate(enteredNumber.join(""))];
+      });
+    } else {
+      setResult(() => {
+        return ["Error"];
       });
     }
   };
@@ -28,6 +41,10 @@ export const Calculator = (props) => {
   const resetHandler = (x) => {
     setEnteredNumber([]);
     setResult([]);
+  };
+
+  const clearLastHandler = (x) => {
+    setIsClearLast(true);
   };
 
   const getValueHandler = (x) => {
@@ -56,40 +73,6 @@ export const Calculator = (props) => {
             <tr>
               <td>
                 <NumberButton
-                  id="reset-calculator"
-                  value="AC"
-                  className={classes.number}
-                  onClick={resetHandler}
-                />
-              </td>
-              <td>
-                <NumberButton
-                  id="minusPositive"
-                  value="+/-"
-                  className={classes.number}
-                  onClick={getValueHandler}
-                />
-              </td>
-              <td>
-                <NumberButton
-                  id="percent"
-                  value="%"
-                  className={classes.number}
-                  onClick={getValueHandler}
-                />
-              </td>
-              <td>
-                <NumberButton
-                  id="division"
-                  value="/"
-                  className={classes.calculation}
-                  onClick={getValueHandler}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <NumberButton
                   id="seven"
                   value="7"
                   className={classes.number}
@@ -114,8 +97,8 @@ export const Calculator = (props) => {
               </td>
               <td>
                 <NumberButton
-                  id="mul"
-                  value="*"
+                  id="division"
+                  value="/"
                   className={classes.calculation}
                   onClick={getValueHandler}
                 />
@@ -148,8 +131,8 @@ export const Calculator = (props) => {
               </td>
               <td>
                 <NumberButton
-                  id="sub"
-                  value="-"
+                  id="mul"
+                  value="*"
                   className={classes.calculation}
                   onClick={getValueHandler}
                 />
@@ -182,15 +165,15 @@ export const Calculator = (props) => {
               </td>
               <td>
                 <NumberButton
-                  id="add"
-                  value="+"
+                  id="sub"
+                  value="-"
                   className={classes.calculation}
                   onClick={getValueHandler}
                 />
               </td>
             </tr>
             <tr>
-              <td colSpan="2">
+              <td>
                 <NumberButton
                   id="zero"
                   value="0"
@@ -204,6 +187,40 @@ export const Calculator = (props) => {
                   value="."
                   className={classes.number}
                   onClick={getValueHandler}
+                />
+              </td>
+              <td>
+                <NumberButton
+                  id="percent"
+                  value="%"
+                  className={classes.number}
+                  onClick={getValueHandler}
+                />
+              </td>
+              <td>
+                <NumberButton
+                  id="add"
+                  value="+"
+                  className={classes.calculation}
+                  onClick={getValueHandler}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td colSpan="2">
+                <NumberButton
+                  id="reset-calculator"
+                  value="Clear All"
+                  className={classes.number}
+                  onClick={resetHandler}
+                />
+              </td>
+              <td>
+                <NumberButton
+                  id="clearOne"
+                  value="AC"
+                  className={classes.number}
+                  onClick={clearLastHandler}
                 />
               </td>
               <td>
