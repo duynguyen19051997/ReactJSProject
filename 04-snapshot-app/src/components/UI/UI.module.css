@@ -1,0 +1,46 @@
+.card {
+}
+
+.input {
+}
+
+.form {
+}
+
+.spen {
+}
+
+.image {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  margin: auto;
+  overflow: hidden;
+}
+
+.overlay {
+  background: rgba(102, 100, 100, 0.7);
+  position: absolute;
+  height: 99%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  opacity: 0;
+}
+
+.image:hover .overlay {
+  opacity: 1;
+  border: 2px solid rgba(82, 24, 24, 0.5);
+  transition: all 0.8s ease-in-out;
+}
+
+.image:hover .img {
+  transition: all 0.8s ease-in-out;
+  transform: scale(1.1);
+}
+
+.img {
+  width: 100%;
+}
