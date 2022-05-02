@@ -30,17 +30,34 @@ export const Input = (props) => {
 };
 
 export const Form = (props) => {
-  const { className, id, type, value, onHandlerInput } = props;
+  const {
+    className,
+    id,
+    type,
+    value,
+    isShowButtonSearch,
+    onHandlerInput,
+    onSubmit,
+  } = props;
+
   const formClass = `${classes.form} ${className}`;
+  const buttonClass = `${classes["button"]} ${classes["button__search"]} ${
+    isShowButtonSearch ? "" : classes["disabled"]
+  }`;
 
   return (
-    <form className={formClass}>
+    <form onSubmit={onSubmit} className={formClass}>
       <Input
         id={id}
         type={type}
         value={value}
         onHandlerInput={onHandlerInput}
       />
+      {isShowButtonSearch && (
+        <button className={buttonClass} type="submit">
+          <i className="fa fa-search" aria-hidden="true"></i>
+        </button>
+      )}
     </form>
   );
 };
@@ -60,5 +77,15 @@ export const Image = (props) => {
       <Card className={classes.overlay}></Card>
       <img className={classes.img} src={src} alt="" />
     </Card>
+  );
+};
+
+export const Button = (props) => {
+  const buttonClass = `${classes["button"]} ${props.className}`;
+
+  return (
+    <button className={buttonClass} onClick={props.onClick}>
+      {props.children}
+    </button>
   );
 };

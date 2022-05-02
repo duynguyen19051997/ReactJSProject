@@ -1,0 +1,32 @@
+.search__area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.search__form {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search__history {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.search__button {
+  width: 23%;
+}
+
+.search__content {
+  margin-top: 20px;
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+}

@@ -1,0 +1,11 @@
+.image__area {
+  width: 100%;
+  height: auto;
+  display: inline-grid;
+  gap: 20px 26px;
+  grid-template-columns: 30% 30% 30%;
+}
+
+.image__detail {
+  width: 100%;
+}

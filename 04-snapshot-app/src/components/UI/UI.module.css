@@ -2,26 +2,60 @@
 }
 
 .input {
+  font-family: "Damion", cursive;
+  font-size: 20px;
+  color: rgb(54, 54, 54);
+  width: 85%;
+  height: 40px;
+  box-sizing: border-box;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  border: 3px solid rgb(167, 167, 167);
+}
+
+.input:hover {
+  background-color: rgb(165, 165, 165);
+  color: rgb(54, 54, 54);
+  border: 3px solid rgb(54, 54, 54);
+}
+
+.button__search {
+  width: 15%;
+  font-size: 20px;
+}
+
+.disabled {
+  background-color: rgb(170, 170, 170);
 }
 
 .form {
+  width: 100%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
 }
 
-.spen {
+.span {
+  text-transform: capitalize;
+  text-align: center;
 }
 
 .image {
   position: relative;
-  width: 90%;
-  max-width: 400px;
+  max-width: 200px;
   margin: auto;
   overflow: hidden;
+  border-radius: 10px;
+}
+
+.image:hover {
+  transition: all 0.8s ease-in-out;
 }
 
 .overlay {
   background: rgba(102, 100, 100, 0.7);
   position: absolute;
-  height: 99%;
+  height: 100%;
   width: 100%;
   left: 0;
   top: 0;
@@ -32,7 +66,6 @@
 
 .image:hover .overlay {
   opacity: 1;
-  border: 2px solid rgba(82, 24, 24, 0.5);
   transition: all 0.8s ease-in-out;
 }
 
@@ -43,4 +76,29 @@
 
 .img {
   width: 100%;
+}
+
+.button {
+  font-family: "Damion", cursive;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(54, 54, 54);
+  color: whitesmoke;
+  transition: all 0.4s ease-in-out;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.button:link,
+.button:visited {
+  background-color: whitesmoke;
+  color: rgb(54, 54, 54);
+}
+
+.button:hover,
+.button:active {
+  background-color: whitesmoke;
+  color: rgb(54, 54, 54);
+  font-size: 25px;
 }

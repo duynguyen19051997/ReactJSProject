@@ -1,11 +1,15 @@
+import { ImageList } from "./components/Snapshot/ImageList";
 import { Search } from "./components/Snapshot/Search";
+import { Card, Span } from "./components/UI/UI";
 import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <Card className="App">
+      <Span className="title">SnapShot</Span>
       <Search />
-    </div>
+      <ImageList />
+    </Card>
   );
 }
 
