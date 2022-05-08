@@ -1,11 +1,18 @@
 .image__area {
+  margin: 15px auto;
   width: 100%;
   height: auto;
   display: inline-grid;
-  gap: 20px 26px;
-  grid-template-columns: 30% 30% 30%;
+  gap: 5px 6px;
+  grid-template-columns: 25% 25% 25% 25%;
 }
 
 .image__detail {
   width: 100%;
+}
+
+.no__image {
+  width: 100%;
+  text-align: center;
+  font-size: 23px;
 }

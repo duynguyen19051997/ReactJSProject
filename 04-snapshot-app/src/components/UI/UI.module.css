@@ -1,6 +1,3 @@
-.card {
-}
-
 .input {
   font-family: "Damion", cursive;
   font-size: 20px;
@@ -42,10 +39,9 @@
 
 .image {
   position: relative;
-  max-width: 200px;
+  max-width: 300px;
   margin: auto;
   overflow: hidden;
-  border-radius: 10px;
 }
 
 .image:hover {
@@ -71,7 +67,7 @@
 
 .image:hover .img {
   transition: all 0.8s ease-in-out;
-  transform: scale(1.1);
+  transform: scale(1.5);
 }
 
 .img {
@@ -101,4 +97,53 @@
   background-color: whitesmoke;
   color: rgb(54, 54, 54);
   font-size: 25px;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.close__button {
+  position: fixed;
+  top: 1vh;
+  right: 1vh;
+}
+
+.modal {
+  position: fixed;
+  top: 3vh;
+  left: 5%;
+  width: 95%;
+  height: auto;
+  overflow: hidden;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  z-index: 30;
+  animation: slide-down 300ms ease-out forwards;
+}
+
+@media (min-width: 768px) {
+  .modal {
+    width: 40rem;
+    left: calc(50% - 20rem);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

@@ -1,3 +1,6 @@
+import ReactDOM from "react-dom";
+import React, { Fragment } from "react";
+
 import classes from "./UI.module.css";
 
 export const Card = (props) => {
@@ -69,13 +72,18 @@ export const Span = (props) => {
 };
 
 export const Image = (props) => {
-  const { className, src } = props;
+  const { className, src, title, onClose, onZoom, isZoom } = props;
   const imageClass = `${classes.image} ${className}`;
 
   return (
     <Card className={imageClass}>
       <Card className={classes.overlay}></Card>
-      <img className={classes.img} src={src} alt="" />
+      <img className={classes.img} src={src} alt={title} onClick={onZoom} />
+      {isZoom && (
+        <Modal onClose={onClose}>
+          <img className={classes.img} src={src} alt={title} />
+        </Modal>
+      )}
     </Card>
   );
 };
@@ -84,8 +92,45 @@ export const Button = (props) => {
   const buttonClass = `${classes["button"]} ${props.className}`;
 
   return (
-    <button className={buttonClass} onClick={props.onClick}>
+    <button className={buttonClass} onClick={props.onClick} value={props.value}>
       {props.children}
     </button>
+  );
+};
+
+export const Backdrop = (props) => {
+  return (
+    <div className={classes["backdrop"]} onClick={props.onClose}>
+      <Button
+        onClick={props.onClose}
+        value="x"
+        className={classes["close__button"]}
+      >
+        <i class="fa fa-times" aria-hidden="true"></i>
+      </Button>
+    </div>
+  );
+};
+export const ModalOverlay = (props) => {
+  return (
+    <div className={classes.modal} onClick={props.onClose}>
+      <div className={classes.content}>{props.children}</div>
+    </div>
+  );
+};
+
+const portalElement = document.getElementById("overlays");
+export const Modal = (props) => {
+  return (
+    <Fragment>
+      {ReactDOM.createPortal(
+        <Backdrop onClose={props.onClose} />,
+        portalElement
+      )}
+      {ReactDOM.createPortal(
+        <ModalOverlay onClose={props.onClose}>{props.children}</ModalOverlay>,
+        portalElement
+      )}
+    </Fragment>
   );
 };
