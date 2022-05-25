@@ -55,3 +55,19 @@ export const Button = (props) => {
     </button>
   );
 };
+
+export const Link = (props) => {
+  const { href, title, children, className, id } = props;
+  const linkClass = `${classes["link"]} ${className}`;
+  return (
+    <a id={id} href={href} title={title} className={linkClass}>
+      {children}
+    </a>
+  );
+};
+
+export const Title = (props) => {
+  const titleClass = `${classes["title"]} ${props.className}`;
+
+  return <span className={titleClass}>{props.children}</span>;
+};

@@ -1,11 +1,17 @@
 .login {
   width: 100%;
+  background-color: #f8f9fa !important;
+  margin-right: 1rem !important;
+  margin-left: 1rem !important;
 }
 
 .login form {
+  width: 25%;
+  margin: 0 auto !important;
 }
 
 .login form table {
+  width: 100%;
 }
 
 .login form table tbody {

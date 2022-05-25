@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Button, Card, Input, Label } from "../ui/UI";
+import { Button, Card, Input, Link } from "../ui/UI";
 import classes from "./Login.module.css";
 
 export const Login = (props) => {
@@ -19,9 +19,6 @@ export const Login = (props) => {
           <tbody>
             <tr>
               <td>
-                <Label>Username</Label>
-              </td>
-              <td>
                 <Input
                   type="text"
                   id="username"
@@ -32,9 +29,6 @@ export const Login = (props) => {
             </tr>
             <tr>
               <td>
-                <Label>Password</Label>
-              </td>
-              <td>
                 <Input
                   type="password"
                   id="password"
@@ -44,8 +38,20 @@ export const Login = (props) => {
               </td>
             </tr>
             <tr>
-              <td colSpan={2}>
+              <td>
                 <Button type="submit">Login</Button>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <hr />
+                <Link
+                  id="create_new_account"
+                  href="http://facebook.com"
+                  title="Create New Account"
+                >
+                  Create new account
+                </Link>
               </td>
             </tr>
           </tbody>
