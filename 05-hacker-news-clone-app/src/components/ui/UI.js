@@ -56,9 +56,10 @@ export const Button = (props) => {
   );
 };
 
-export const Link = (props) => {
+export const LinkUI = (props) => {
   const { href, title, children, className, id } = props;
   const linkClass = `${classes["link"]} ${className}`;
+
   return (
     <a id={id} href={href} title={title} className={linkClass}>
       {children}

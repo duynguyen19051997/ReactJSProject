@@ -1,1 +1,5 @@
-export const LoginPage = (props) => {};
+import { Login } from "../components/login/Login";
+
+export const LoginPage = (props) => {
+  return <Login />;
+};

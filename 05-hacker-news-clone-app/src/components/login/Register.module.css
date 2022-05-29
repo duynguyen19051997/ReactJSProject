@@ -1,25 +1,25 @@
-.login {
+.register {
   width: 100%;
   background-color: #f8f9fa !important;
   margin-right: 1rem !important;
   margin-left: 1rem !important;
 }
 
-.login form {
+.register form {
   width: 25%;
   margin: 0 auto !important;
 }
 
-.login form table {
+.register form table {
   width: 100%;
   margin: 2px 0;
 }
 
-.login form table tbody {
+.register form table tbody {
 }
 
-.login form table tbody tr {
+.register form table tbody tr {
 }
 
-.login form table tbody tr td {
+.register form table tbody tr td {
 }

@@ -4,6 +4,7 @@
   padding-top: 20px;
   padding-bottom: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .header {
@@ -36,4 +37,40 @@
 .login {
   width: 25%;
   float: right;
+}
+
+.label {
+  font-family: "Poppins", sans-serif;
+  color: #000;
+  font-weight: 700 !important;
+}
+
+.header_link {
+  color: #36a420 !important;
+  background-color: #fff !important;
+}
+
+.header_link:link,
+.header_link:visited {
+}
+
+.header_link:hover,
+.header_link:active {
+  background-color: #36a420 !important;
+  color: #fff !important;
+}
+
+.header_login {
+  color: #f79918 !important;
+  background-color: #fff !important;
+}
+
+.header_login:link,
+.header_login:visited {
+}
+
+.header_login:hover,
+.header_login:active {
+  background-color: #f79918 !important;
+  color: #fff !important;
 }

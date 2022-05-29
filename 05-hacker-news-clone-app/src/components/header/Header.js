@@ -1,4 +1,4 @@
-import { Card, Link, Title } from "../ui/UI";
+import { Card, LinkUI, Title } from "../ui/UI";
 
 import classes from "./Header.module.css";
 
@@ -11,30 +11,46 @@ export const Header = (props) => {
             <Title>Hacker New</Title>
           </li>
           <li>
-            <Link>New</Link>
+            <LinkUI href="/news" className={classes["header_link"]}>
+              New
+            </LinkUI>
           </li>
           <li>
-            <Link>Comments</Link>
+            <LinkUI href="/comments" className={classes["header_link"]}>
+              Comments
+            </LinkUI>
           </li>
           <li>
-            <Link>Show</Link>
+            <LinkUI href="/show" className={classes["header_link"]}>
+              Show
+            </LinkUI>
           </li>
           <li>
-            <Link>Ask</Link>
+            <LinkUI href="/ask" className={classes["header_link"]}>
+              Ask
+            </LinkUI>
           </li>
           <li>
-            <Link>Job</Link>
+            <LinkUI href="/jobs" className={classes["header_link"]}>
+              Job
+            </LinkUI>
           </li>
           <li>
-            <Link>Submit</Link>
+            <LinkUI href="/submit" className={classes["header_link"]}>
+              Submit
+            </LinkUI>
           </li>
         </ul>
         <ul className={classes.login}>
           <li>
-            <Link>Login</Link>
+            <LinkUI href="/login" className={classes["header_login"]}>
+              Login
+            </LinkUI>
           </li>
           <li>
-            <Link>Create new account</Link>
+            <LinkUI href="/register" className={classes["header_login"]}>
+              Create new account
+            </LinkUI>
           </li>
         </ul>
       </Card>
