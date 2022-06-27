@@ -6,6 +6,7 @@ import { HomePage } from "./pages/HomePage";
 import { RegisterPage } from "./pages/RegisterPage";
 
 import "./App.css";
+import { NewsPage } from "./pages/NewsPage";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
         <Switch>
           <Route path="/" exact>
             <HomePage />
+          </Route>
+          <Route path="/news" exact>
+            <NewsPage />
           </Route>
           <Route path="/login">
             <LoginPage />

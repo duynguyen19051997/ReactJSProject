@@ -12,7 +12,7 @@ export const Header = (props) => {
           </li>
           <li>
             <LinkUI href="/news" className={classes["header_link"]}>
-              New
+              News
             </LinkUI>
           </li>
           <li>
