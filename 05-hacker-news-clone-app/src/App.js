@@ -7,6 +7,7 @@ import { RegisterPage } from "./pages/RegisterPage";
 
 import "./App.css";
 import { NewsPage } from "./pages/NewsPage";
+import { Footer } from "./components/footer/Footer";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           </Route>
         </Switch>
       </main>
+      <Footer />
     </div>
   );
 }
