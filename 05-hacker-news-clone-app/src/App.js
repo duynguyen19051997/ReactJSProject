@@ -8,6 +8,7 @@ import { RegisterPage } from "./pages/RegisterPage";
 import "./App.css";
 import { NewsPage } from "./pages/NewsPage";
 import { Footer } from "./components/footer/Footer";
+import { CommentsPage } from "./pages/CommentsPage";
 
 function App() {
   return (
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route path="/news" exact>
             <NewsPage />
+          </Route>
+          <Route path="/comments" exact>
+            <CommentsPage />
           </Route>
           <Route path="/login">
             <LoginPage />

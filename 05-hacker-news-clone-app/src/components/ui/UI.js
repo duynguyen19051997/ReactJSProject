@@ -72,3 +72,24 @@ export const Title = (props) => {
 
   return <span className={titleClass}>{props.children}</span>;
 };
+
+export const TextArea = (props) => {
+  const { id, cols, rows, value, className, onHandlerTextArea } = props;
+  const textAreaClass = `${classes["text_area"]} ${className}`;
+
+  const changeTextAreaHandler = (event) => {
+    event.preventDefault();
+    onHandlerTextArea(event.target.value);
+  };
+
+  return (
+    <textarea
+      id={id}
+      className={textAreaClass}
+      cols={cols}
+      rows={rows}
+      value={value}
+      onChange={changeTextAreaHandler}
+    ></textarea>
+  );
+};
