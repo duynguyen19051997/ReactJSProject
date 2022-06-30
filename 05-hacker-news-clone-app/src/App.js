@@ -1,14 +1,16 @@
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import { Header } from "./components/header/Header";
 import { LoginPage } from "./pages/LoginPage";
 import { HomePage } from "./pages/HomePage";
 import { RegisterPage } from "./pages/RegisterPage";
 
-import "./App.css";
 import { NewsPage } from "./pages/NewsPage";
 import { Footer } from "./components/footer/Footer";
 import { CommentsPage } from "./pages/CommentsPage";
+import { AddNewsPage } from "./pages/AddNewsPage";
+
+import "./App.css";
 
 function App() {
   return (
@@ -24,6 +26,9 @@ function App() {
           </Route>
           <Route path="/comments" exact>
             <CommentsPage />
+          </Route>
+          <Route path="/submit" exact>
+            <AddNewsPage />
           </Route>
           <Route path="/login">
             <LoginPage />

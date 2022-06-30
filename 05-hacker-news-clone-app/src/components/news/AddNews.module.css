@@ -1,0 +1,13 @@
+.add_news_area {
+  width: 100%;
+  height: auto;
+}
+
+.add_news_area table {
+  width: 100%;
+}
+
+.add_news_button {
+  float: right;
+  margin-right: 8px;
+}
