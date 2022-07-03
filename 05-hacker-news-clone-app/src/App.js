@@ -11,6 +11,7 @@ import { CommentsPage } from "./pages/CommentsPage";
 import { AddNewsPage } from "./pages/AddNewsPage";
 
 import "./App.css";
+import { AskPager } from "./pages/AskPage";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
           </Route>
           <Route path="/comments" exact>
             <CommentsPage />
+          </Route>
+          <Route path="/ask" exact>
+            <AskPager />
           </Route>
           <Route path="/submit" exact>
             <AddNewsPage />
