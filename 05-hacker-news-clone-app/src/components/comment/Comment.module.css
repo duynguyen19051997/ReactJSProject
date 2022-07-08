@@ -66,6 +66,8 @@
   word-wrap: break-word;
   color: rgb(90, 89, 89);
   font-size: 18px;
+  float: left;
+  text-align: left;
 }
 
 .comment_footer {
@@ -74,7 +76,7 @@
 
 .comment_reply {
   float: left;
-  margin-left: 70px;
+  margin-left: 25px;
   background-color: #fff;
   color: #999;
   text-decoration: underline;

@@ -2,7 +2,7 @@ import { Card, Title } from "../ui/UI";
 import classes from "./NewsItem.module.css";
 
 export const NewsItem = (props) => {
-  const { id, title, date_time, comments_count } = props.item;
+  const { id, title, modified_date, modified_by, comments } = props.item;
 
   return (
     <Card className={classes["news_item_area"]}>
@@ -15,14 +15,18 @@ export const NewsItem = (props) => {
         </Card>
         <Card className={classes["news_item_info"]}>
           <Card className={classes["news_item_date_time"]}>
-            <span>{date_time}</span>
+            <span>{modified_date}</span>
           </Card>
-          <Card className={classes["news_item_dash"]}>
-            <span>&mdash;</span>
-          </Card>
-          <Card className={classes["news_item_comments"]}>
-            <span>{comments_count} comments</span>
-          </Card>
+          {comments && comments.length > 0 && (
+            <Card className={classes["news_item_dash"]}>
+              <span>&mdash;</span>
+            </Card>
+          )}
+          {comments && comments.length > 0 && (
+            <Card className={classes["news_item_comments"]}>
+              <span>{comments.length}comments</span>
+            </Card>
+          )}
         </Card>
       </Card>
     </Card>

@@ -1,0 +1,26 @@
+.comments_list_area {
+  width: 100%;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  list-style: none outside none;
+}
+
+.comments_list_detail {
+  width: 98%;
+  margin: 0px auto;
+  list-style: none outside none;
+}
+
+.comments_list_ul {
+  width: 100%;
+  list-style: none outside none;
+}
+
+.comments_list_ul_li {
+  width: 100%;
+}
+
+.comments_list_ul_li_children {
+  margin-bottom: 10px;
+}
