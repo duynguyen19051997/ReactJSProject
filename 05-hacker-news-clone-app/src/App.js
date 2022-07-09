@@ -1,17 +1,17 @@
 import { Route, Switch } from "react-router-dom";
 
+import React from "react";
 import { Header } from "./components/header/Header";
 import { LoginPage } from "./pages/LoginPage";
 import { HomePage } from "./pages/HomePage";
 import { RegisterPage } from "./pages/RegisterPage";
-
 import { NewsPage } from "./pages/NewsPage";
 import { Footer } from "./components/footer/Footer";
 import { CommentsPage } from "./pages/CommentsPage";
 import { AddNewsPage } from "./pages/AddNewsPage";
+import { AskPager } from "./pages/AskPage";
 
 import "./App.css";
-import { AskPager } from "./pages/AskPage";
 
 function App() {
   return (

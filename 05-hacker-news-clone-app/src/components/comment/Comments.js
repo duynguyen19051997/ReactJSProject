@@ -1,3 +1,4 @@
+import React from "react";
 import { Card } from "../ui/UI";
 import { AddComment } from "./AddComment";
 import { Comment } from "./Comment";

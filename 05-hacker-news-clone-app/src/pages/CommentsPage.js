@@ -1,3 +1,4 @@
+import React from "react";
 import { AddComment } from "../components/comment/AddComment";
 
 const DUMMY_DATA = {

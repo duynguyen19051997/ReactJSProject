@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import { Button, Card, Input, Label, TextArea } from "../ui/UI";
 import classes from "./AddNews.module.css";

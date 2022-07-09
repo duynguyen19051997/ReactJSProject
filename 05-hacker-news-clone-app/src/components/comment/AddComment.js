@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { NewsItem } from "../news/NewsItem";
 import { Button, Card, TextArea } from "../ui/UI";
 

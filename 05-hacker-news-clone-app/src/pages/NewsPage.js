@@ -1,3 +1,4 @@
+import React from "react";
 import { NewsList } from "../components/news/NewsList";
 
 const DUMMY_DATA = [

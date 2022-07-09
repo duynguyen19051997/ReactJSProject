@@ -1,3 +1,4 @@
+import React from "react";
 import classes from "./UI.module.css";
 
 export const Card = ({ className, children }) => {

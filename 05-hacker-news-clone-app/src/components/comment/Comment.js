@@ -1,3 +1,4 @@
+import React from "react";
 import { Card, LinkUI } from "../ui/UI";
 import classes from "./Comment.module.css";
 

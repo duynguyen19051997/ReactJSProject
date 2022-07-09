@@ -1,15 +1,28 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { app } from "../../config/firebase-config";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import { Button, Card, Input, LinkUI } from "../ui/UI";
 import classes from "./Login.module.css";
 
 export const Login = (props) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const loginHandler = (event) => {
     event.preventDefault();
-    console.log(username + " " + password);
+    const authentication = getAuth();
+    signInWithEmailAndPassword(authentication, email, password).then(
+      (response) => {
+        history.push("/");
+        sessionStorage.setItem(
+          "AuthToken",
+          response._tokenResponse.refreshToken
+        );
+      }
+    );
   };
 
   return (
@@ -20,10 +33,10 @@ export const Login = (props) => {
             <tr>
               <td>
                 <Input
-                  type="text"
-                  id="username"
-                  placeholder="Username"
-                  onHandlerInput={setUsername}
+                  type="email"
+                  id="email"
+                  placeholder="Email"
+                  onHandlerInput={setEmail}
                 />
               </td>
             </tr>

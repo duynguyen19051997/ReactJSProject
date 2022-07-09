@@ -1,3 +1,4 @@
+import React from "react";
 import { Card, Title } from "../ui/UI";
 import classes from "./Footer.module.css";
 

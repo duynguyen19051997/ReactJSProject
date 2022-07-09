@@ -1,15 +1,24 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { app } from "../../config/firebase-config";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { useHistory } from "react-router-dom";
 
 import { Button, Card, Input } from "../ui/UI";
 import classes from "./Register.module.css";
 
 export const Register = (props) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   const registerHandler = (event) => {
     event.preventDefault();
-    console.log(username + " " + password);
+    const authentication = getAuth();
+    createUserWithEmailAndPassword(authentication, email, password).then(
+      (response) => {
+        history.push("/login");
+      }
+    );
   };
 
   return (
@@ -20,10 +29,10 @@ export const Register = (props) => {
             <tr>
               <td>
                 <Input
-                  type="text"
-                  id="username"
-                  placeholder="Username"
-                  onHandlerInput={setUsername}
+                  type="email"
+                  id="email"
+                  placeholder="Email"
+                  onHandlerInput={setEmail}
                 />
               </td>
             </tr>

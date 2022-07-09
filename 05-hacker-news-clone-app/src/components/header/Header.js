@@ -1,8 +1,21 @@
-import { Card, LinkUI, Title } from "../ui/UI";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { Button, Card, LinkUI, Title } from "../ui/UI";
 
 import classes from "./Header.module.css";
 
 export const Header = (props) => {
+  const history = useHistory();
+  const [isLogin, setIsLogin] = useState(
+    sessionStorage.getItem("AuthToken") !== null
+  );
+  const logoutHandler = () => {
+    sessionStorage.removeItem("AuthToken");
+    sessionStorage.clear();
+    history.push("/login");
+    setIsLogin(false);
+  };
+
   return (
     <nav className={classes["site_nav"]}>
       <Card className={classes.header}>
@@ -42,16 +55,30 @@ export const Header = (props) => {
           </li>
         </ul>
         <ul className={classes.login}>
-          <li>
-            <LinkUI href="/login" className={classes["header_login"]}>
-              Login
-            </LinkUI>
-          </li>
-          <li>
-            <LinkUI href="/register" className={classes["header_login"]}>
-              Create new account
-            </LinkUI>
-          </li>
+          {!isLogin && (
+            <li>
+              <LinkUI href="/login" className={classes["header_login"]}>
+                Login
+              </LinkUI>
+            </li>
+          )}
+          {!isLogin && (
+            <li>
+              <LinkUI href="/register" className={classes["header_login"]}>
+                Create new account
+              </LinkUI>
+            </li>
+          )}
+          {isLogin && (
+            <li>
+              <Button
+                className={classes["header_login"]}
+                onClick={logoutHandler}
+              >
+                Log out
+              </Button>
+            </li>
+          )}
         </ul>
       </Card>
     </nav>
