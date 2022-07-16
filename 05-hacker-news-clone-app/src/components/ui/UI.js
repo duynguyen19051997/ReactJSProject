@@ -7,14 +7,20 @@ export const Card = ({ className, children }) => {
   return <div className={cardClass}>{children}</div>;
 };
 
-export const Label = (props) => {
-  const labelClass = `${classes.label} ${props.className}`;
+export const Label = ({ className, children }) => {
+  const labelClass = `${classes.label} ${className}`;
 
-  return <label className={labelClass}>{props.children}</label>;
+  return <label className={labelClass}>{children}</label>;
 };
 
-export const Input = (props) => {
-  const { className, id, type, value, placeholder, onHandlerInput } = props;
+export const Input = ({
+  className,
+  id,
+  type,
+  value,
+  placeholder,
+  onHandlerInput,
+}) => {
   const inputClass = `${classes.input} ${className}`;
 
   const changeInputHandler = (event) => {
@@ -40,8 +46,7 @@ export const Input = (props) => {
   );
 };
 
-export const Button = (props) => {
-  const { className, id, type, value, onClick, children } = props;
+export const Button = ({ className, id, type, value, onClick, children }) => {
   const buttonClass = `${classes["button"]} ${className}`;
 
   return (
@@ -57,8 +62,7 @@ export const Button = (props) => {
   );
 };
 
-export const LinkUI = (props) => {
-  const { href, title, children, className, id } = props;
+export const LinkUI = ({ href, title, children, className, id }) => {
   const linkClass = `${classes["link"]} ${className}`;
 
   return (
@@ -68,14 +72,20 @@ export const LinkUI = (props) => {
   );
 };
 
-export const Title = (props) => {
-  const titleClass = `${classes["title"]} ${props.className}`;
+export const Title = ({ className, children }) => {
+  const titleClass = `${classes["title"]} ${className}`;
 
-  return <span className={titleClass}>{props.children}</span>;
+  return <span className={titleClass}>{children}</span>;
 };
 
-export const TextArea = (props) => {
-  const { id, cols, rows, value, className, onHandlerTextArea } = props;
+export const TextArea = ({
+  id,
+  cols,
+  rows,
+  value,
+  className,
+  onHandlerTextArea,
+}) => {
   const textAreaClass = `${classes["text_area"]} ${className}`;
 
   const changeTextAreaHandler = (event) => {

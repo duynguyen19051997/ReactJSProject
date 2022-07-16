@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import { app } from "../../config/firebase-config";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { authActions } from "../../store/auth-slice";
 
 import { Button, Card, Input, LinkUI } from "../ui/UI";
 import classes from "./Login.module.css";
@@ -10,20 +12,31 @@ export const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
+  const authState = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
   const loginHandler = (event) => {
     event.preventDefault();
     const authentication = getAuth();
     signInWithEmailAndPassword(authentication, email, password).then(
       (response) => {
-        history.push("/");
-        sessionStorage.setItem(
-          "AuthToken",
-          response._tokenResponse.refreshToken
-        );
+        const user = {
+          id: response.user.uid,
+          email: email,
+          password: password,
+          authToken: response._tokenResponse.refreshToken,
+          isLoggedIn: true,
+        };
+        dispatch(authActions.login({ user: user }));
       }
     );
   };
+
+  useEffect(() => {
+    if (authState.isLoggedIn) {
+      history.push("/");
+    }
+  }, [authState]);
 
   return (
     <Card className={classes["login"]}>

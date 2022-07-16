@@ -1,19 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Button, Card, LinkUI, Title } from "../ui/UI";
+import { authActions } from "../../store/auth-slice";
 
 import classes from "./Header.module.css";
 
 export const Header = (props) => {
   const history = useHistory();
-  const [isLogin, setIsLogin] = useState(
-    sessionStorage.getItem("AuthToken") !== null
-  );
+  const [isLogin, setIsLogin] = useState(false);
+
+  const authState = useSelector((state) => state.auth);
+
+  console.log(authState);
+
+  useEffect(() => {
+    if (authState) {
+      setIsLogin(authState.isLoggedIn);
+    } else {
+      setIsLogin(false);
+    }
+  }, [authState]);
+
   const logoutHandler = () => {
-    sessionStorage.removeItem("AuthToken");
-    sessionStorage.clear();
-    history.push("/login");
-    setIsLogin(false);
+    authActions.logout();
   };
 
   return (
