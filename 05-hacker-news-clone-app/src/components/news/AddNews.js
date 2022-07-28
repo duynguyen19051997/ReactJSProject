@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { newsActions } from "../../store/news-slice";
+import { sendNewsData } from "../../store/news-actions";
+import { useDispatch } from "react-redux";
 
 import { Button, Card, Input, Label, TextArea } from "../ui/UI";
 import classes from "./AddNews.module.css";
@@ -7,13 +11,24 @@ export const AddNews = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredUrl, setEnteredUrl] = useState("");
   const [enteredText, setEnteredText] = useState("");
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const submitAddNewsHandler = (event) => {
     event.preventDefault();
-    console.log(enteredText + ", " + enteredTitle + ", " + enteredUrl);
+    dispatch(
+      newsActions.addNews({
+        title: enteredTitle,
+        link: enteredUrl,
+        description: enteredText,
+        modified_by: "DuyNVA",
+      })
+    );
+    dispatch(sendNewsData());
     setEnteredTitle("");
     setEnteredUrl("");
     setEnteredText("");
+    history.push("/news");
   };
 
   return (

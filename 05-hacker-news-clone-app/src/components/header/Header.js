@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Button, Card, LinkUI, Title } from "../ui/UI";
 import { authActions } from "../../store/auth-slice";
@@ -7,12 +6,9 @@ import { authActions } from "../../store/auth-slice";
 import classes from "./Header.module.css";
 
 export const Header = (props) => {
-  const history = useHistory();
   const [isLogin, setIsLogin] = useState(false);
 
   const authState = useSelector((state) => state.auth);
-
-  console.log(authState);
 
   useEffect(() => {
     if (authState) {
@@ -22,7 +18,8 @@ export const Header = (props) => {
     }
   }, [authState]);
 
-  const logoutHandler = () => {
+  const logoutHandler = (event) => {
+    event.preventDefault();
     authActions.logout();
   };
 

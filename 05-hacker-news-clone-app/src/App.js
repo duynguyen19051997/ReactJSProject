@@ -1,6 +1,7 @@
 import { Route, Switch } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import React from "react";
 import { Header } from "./components/header/Header";
 import { LoginPage } from "./pages/LoginPage";
 import { HomePage } from "./pages/HomePage";
@@ -10,13 +11,30 @@ import { Footer } from "./components/footer/Footer";
 import { CommentsPage } from "./pages/CommentsPage";
 import { AddNewsPage } from "./pages/AddNewsPage";
 import { AskPager } from "./pages/AskPage";
+import { Notification } from "./components/ui/Notification";
+
+import { fetchNewsData } from "./store/news-actions";
 
 import "./App.css";
 
 function App() {
+  const notification = useSelector((state) => state.ui.notifications);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchNewsData());
+  }, [dispatch]);
+
   return (
     <div className="App">
       <Header />
+      {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
       <main>
         <Switch>
           <Route path="/" exact>

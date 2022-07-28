@@ -3,7 +3,7 @@ import { Card, Title } from "../ui/UI";
 import classes from "./NewsItem.module.css";
 
 export const NewsItem = (props) => {
-  const { id, title, modified_date, modified_by, comments } = props.item;
+  const { id, title, link, modified_date, modified_by, comments } = props.item;
 
   return (
     <Card className={classes["news_item_area"]}>

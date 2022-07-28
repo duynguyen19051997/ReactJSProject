@@ -46,7 +46,7 @@ export const Input = ({
   );
 };
 
-export const Button = ({ className, id, type, value, onClick, children }) => {
+export const Button = ({ className, id, type, value, children, onClick }) => {
   const buttonClass = `${classes["button"]} ${className}`;
 
   return (

@@ -25,13 +25,12 @@ const authSlice = createSlice({
       state.password = password;
       state.authToken = authToken;
       state.isLoggedIn = isLoggedIn;
-      sessionStorage.setItem("authToken", state.authToken);
+      localStorage.setItem("authToken", state.authToken);
     },
-    logout: (state) => {
+    logout: (state, action) => {
       state = initialState;
-      console.log(state);
-      sessionStorage.removeItem("authToken");
-      sessionStorage.clear();
+      localStorage.removeItem("authToken");
+      localStorage.clear();
     },
     createNewUser: (state, action) => {},
   },
